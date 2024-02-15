@@ -6,6 +6,7 @@ use MyFramework\Framework\Http\Response;
 
 define('BASE_PATH', dirname(__DIR__));
 require BASE_PATH . "/vendor/autoload.php";
+require BASE_PATH . "/framework/lib/dev/dev.php";
 
 $request = Request::createFromGlobals();
 

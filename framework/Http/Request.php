@@ -18,6 +18,18 @@ readonly class Request
         return new static($_GET, $_POST, $_COOKIE, $_FILES, $_SERVER);
     }
 
+    public function getJson()
+    {
+        if ($this->server['REQUEST_METHOD'] === 'POST' && str_contains($this->server['CONTENT_TYPE'], 'application/json')) {
+            $jsonData = file_get_contents('php://input');
+            $jsonDecoded = json_decode($jsonData, true);
+
+            if (is_array($jsonDecoded)) {
+                return $jsonDecoded;
+            }
+        }
+        return null;
+    }
     public function getServer(): array
     {
         return $this->server;
