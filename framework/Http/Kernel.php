@@ -23,8 +23,7 @@ class Kernel
         $method = $request->getMethod();
         $uri = $request->getPath();
         [$status, [$controller, $action], $vars] = $dispatcher->dispatch($method, $uri);
-
         $response = call_user_func_array([new $controller, $action], $vars);
-        return $response;
+        return new Response($response);
     }
 }

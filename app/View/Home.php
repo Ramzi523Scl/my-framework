@@ -26,29 +26,5 @@
         </div>
     </div>
 </nav>
-<form action="<?php echo BASE_URL . '/users/create'; ?>">
-    <div class="row g-3 align-items-center">
-        <div class="col-auto">
-            <label for="exampleFormControlInput1" class="form-label">User name</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Андрей">
-        </div>
-    </div>
-
-    <div class="row g-3 align-items-center">
-        <div class="col-auto">
-            <label for="exampleFormControlInput1" class="form-label">User password</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="1234">
-        </div>
-    </div>
-    <div class="p-3">
-        <input type="submit" value="Отправить">
-    </div>
-</form>
-
-<div>
-    <?php foreach ($data as $user) {
-       echo $user['id'] . " - " . $user['name'] . "<hr>";
-    };?>
-</div>
-</body>
+<h1 class="p-3">Это главная страница</h1>
 </html>

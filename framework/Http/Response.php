@@ -14,6 +14,15 @@ class Response
 
     public function send()
     {
-        echo $this->content;
+
+        if (is_array($this->content) ) {
+            $content = json_encode($this->content);
+            dd($content);
+        } elseif (is_object($this->content)) {
+            dd($this->content);
+        } else {
+            echo $this->content;
+        }
+
     }
 }

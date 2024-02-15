@@ -106,6 +106,7 @@ class Query implements QueryInterface
     {
         $query = "SELECT * FROM $this->table $this->query";
         $statement = $this->connection->prepare($query);
+
         foreach ($this->data as $key => $value) {
             $statement->bindValue(":$key", $value);
         }

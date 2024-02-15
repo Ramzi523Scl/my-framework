@@ -3,24 +3,45 @@
 namespace App\Controllers;
 
 use App\Model\User;
-use MyFramework\Framework\Http\Request;
-use MyFramework\Framework\Http\Response;
+use MyFramework\Framework\Http\Controller;
 
 class UserController extends Controller
 {
-    public function show(int $id): Response
+    public function index()
     {
-        $content = "<h1>User - 1</h1>";
-        return new Response($content);
+        $users = (new User())->all();
+        return $this->render('users', $users);
     }
-
-    public function update()
+    public function show($id)
     {
+        $user = (new User())->find($id);
+        return $user;
+//        если перенаправлять во вьюху
+//        return $this->render('users', $user);
     }
     public function create()
     {
+        $data = $this->json();
         $user = new User();
-        $result = $user->create(['email' => 'fff@gmail.com', 'password' => '1234']);
-        dd($result);
+        $user->create($data);
+        return $data;
+//        если перенаправлять во вьюху
+//        return $this->render('users', $data);
+    }
+    public function update($id)
+    {
+        $data = $this->json();
+        $user = new User();
+        $user->update(['id' => $id], $data);
+        return $data;
+//        если перенаправлять во вьюху
+//        return $this->render('users', $data);
+
+    }
+
+    public function delete($id)
+    {
+        $user = new User();
+        return $user->where(['id' => $id])->delete();
     }
 }
